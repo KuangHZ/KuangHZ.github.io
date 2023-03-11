@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.offcn.dao.PerformerdetailtableMapper">
+  <resultMap id="BaseResultMap" type="com.offcn.bean.Performerdetailtable">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="e_name" jdbcType="VARCHAR" property="eName" />
+    <result column="alias" jdbcType="VARCHAR" property="alias" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="bloodtype" jdbcType="VARCHAR" property="bloodtype" />
+    <result column="height" jdbcType="VARCHAR" property="height" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="constellation" jdbcType="VARCHAR" property="constellation" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="ResidentialAddress" jdbcType="VARCHAR" property="residentialaddress" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="BrokerageAgency" jdbcType="VARCHAR" property="brokerageagency" />
+    <result column="fameyear" jdbcType="VARCHAR" property="fameyear" />
+    <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+    <result column="Occupation" jdbcType="VARCHAR" property="occupation" />
+    <result column="weight" jdbcType="VARCHAR" property="weight" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="des" jdbcType="VARCHAR" property="des" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    name, e_name, alias, sex, bloodtype, height, address, birthday, constellation, location, 
+    ResidentialAddress, school, BrokerageAgency, fameyear, hobby, Occupation, weight, 
+    image, des
+  </sql>
+  <select id="selectByExample" parameterType="com.offcn.bean.PerformerdetailtableExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from performerdetailtable
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.offcn.bean.PerformerdetailtableExample">
+    delete from performerdetailtable
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.offcn.bean.Performerdetailtable">
+    insert into performerdetailtable (name, e_name, alias, 
+      sex, bloodtype, height, 
+      address, birthday, constellation, 
+      location, ResidentialAddress, school, 
+      BrokerageAgency, fameyear, hobby, 
+      Occupation, weight, image, 
+      des)
+    values (#{name,jdbcType=VARCHAR}, #{eName,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{bloodtype,jdbcType=VARCHAR}, #{height,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, #{constellation,jdbcType=VARCHAR}, 
+      #{location,jdbcType=VARCHAR}, #{residentialaddress,jdbcType=VARCHAR}, #{school,jdbcType=VARCHAR}, 
+      #{brokerageagency,jdbcType=VARCHAR}, #{fameyear,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, 
+      #{occupation,jdbcType=VARCHAR}, #{weight,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{des,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.offcn.bean.Performerdetailtable">
+    insert into performerdetailtable
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="eName != null">
+        e_name,
+      </if>
+      <if test="alias != null">
+        alias,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="bloodtype != null">
+        bloodtype,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="constellation != null">
+        constellation,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="residentialaddress != null">
+        ResidentialAddress,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+      <if test="brokerageagency != null">
+        BrokerageAgency,
+      </if>
+      <if test="fameyear != null">
+        fameyear,
+      </if>
+      <if test="hobby != null">
+        hobby,
+      </if>
+      <if test="occupation != null">
+        Occupation,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="des != null">
+        des,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="eName != null">
+        #{eName,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodtype != null">
+        #{bloodtype,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="constellation != null">
+        #{constellation,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="residentialaddress != null">
+        #{residentialaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="brokerageagency != null">
+        #{brokerageagency,jdbcType=VARCHAR},
+      </if>
+      <if test="fameyear != null">
+        #{fameyear,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null">
+        #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="occupation != null">
+        #{occupation,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="des != null">
+        #{des,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.offcn.bean.PerformerdetailtableExample" resultType="java.lang.Long">
+    select count(*) from performerdetailtable
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update performerdetailtable
+    <set>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eName != null">
+        e_name = #{record.eName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.alias != null">
+        alias = #{record.alias,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bloodtype != null">
+        bloodtype = #{record.bloodtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.height != null">
+        height = #{record.height,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthday != null">
+        birthday = #{record.birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="record.constellation != null">
+        constellation = #{record.constellation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.location != null">
+        location = #{record.location,jdbcType=VARCHAR},
+      </if>
+      <if test="record.residentialaddress != null">
+        ResidentialAddress = #{record.residentialaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.school != null">
+        school = #{record.school,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brokerageagency != null">
+        BrokerageAgency = #{record.brokerageagency,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fameyear != null">
+        fameyear = #{record.fameyear,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hobby != null">
+        hobby = #{record.hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.occupation != null">
+        Occupation = #{record.occupation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weight != null">
+        weight = #{record.weight,jdbcType=VARCHAR},
+      </if>
+      <if test="record.image != null">
+        image = #{record.image,jdbcType=VARCHAR},
+      </if>
+      <if test="record.des != null">
+        des = #{record.des,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update performerdetailtable
+    set name = #{record.name,jdbcType=VARCHAR},
+      e_name = #{record.eName,jdbcType=VARCHAR},
+      alias = #{record.alias,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      bloodtype = #{record.bloodtype,jdbcType=VARCHAR},
+      height = #{record.height,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=VARCHAR},
+      constellation = #{record.constellation,jdbcType=VARCHAR},
+      location = #{record.location,jdbcType=VARCHAR},
+      ResidentialAddress = #{record.residentialaddress,jdbcType=VARCHAR},
+      school = #{record.school,jdbcType=VARCHAR},
+      BrokerageAgency = #{record.brokerageagency,jdbcType=VARCHAR},
+      fameyear = #{record.fameyear,jdbcType=VARCHAR},
+      hobby = #{record.hobby,jdbcType=VARCHAR},
+      Occupation = #{record.occupation,jdbcType=VARCHAR},
+      weight = #{record.weight,jdbcType=VARCHAR},
+      image = #{record.image,jdbcType=VARCHAR},
+      des = #{record.des,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
